@@ -1,7 +1,7 @@
 //let SERVER_PATH = "http://122.114.195.108:8100/manager/";
 //let SERVER_PATH = "http://122.114.195.108:8102/managerAdmin/";
 //let SERVER_PATH = "/managerAdmin/";
-let SERVER_PATH = "http://127.0.0.1:8100/manager/";
+let SERVER_PATH = "https://qingtingjavaapi.youyacao.com/manager/";
 function lay_alert(msg) {
     layui.use('layer',function () {
         let layer = layui.layer;
