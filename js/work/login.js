@@ -28,9 +28,8 @@ $(function () {
                     console.log(JSON.parse(data));
                     let d = JSON.parse(data).data;
                     if (JSON.parse(data).message.code==="0") {
-                        if (!!JSON.parse(d).token) {
-                            console.log(JSON.parse(d).token);
-                            sessionStorage.setItem("token", JSON.parse(d).token);
+                        if (!!d) {
+                            sessionStorage.setItem("token", d);
                             window.location.href = "index.html";
                         }
                     } else {

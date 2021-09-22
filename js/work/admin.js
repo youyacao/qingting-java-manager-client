@@ -1,35 +1,68 @@
-$(function () {let appVue = new Vue({
-    el:".layui-fluid",
-    data(){
-        return{
-
+$(function () {
+    let i = 0;
+    let appVue = new Vue({
+        el:".layui-fluid",
+        data:{
             userList:[],
-        }
-    },
-    mounted:function () {
-        this.getUserList();
-    },
-    methods:{
-        getUserList:function () {
-            this.pageIndex(sessionStorage.getItem("updateUser"));
         },
-        updateUser(event){
-            console.log(JSON.stringify(this.userList))
-            this.$http.post(SERVER_PATH+'updateUA', JSON.stringify(this.userList[0])).then(function (res) {
-                console.log(res)
-            })
+        mounted:function () {
+            this.getUserList();
         },
-        pageIndex(i){
-            this.$http.get(SERVER_PATH+'user',{
-                params:{
-                    "uId":i
-                }
-            }).then(function (res) {
-                console.log(res.data.data);
-                this.userList = res.data.data;
-                console.log(this.userList)
-            });
+        methods:{
+            getUserList:function () {
+                i = 0;
+                this.pageIndex(i);
+            },
+            addUser(){
+                window.location.href="addUser.html"
+            },
+            home(){
+                i = 0;
+                this.pageIndex(i);
+            },
+            next(){
+                i++;
+                this.pageIndex(i);
+            },
+            last(){
+                i--;
+                this.pageIndex(i);
+            },
+            updateUser(uId){
+                sessionStorage.setItem("updateUser",uId);
+                window.location.href = "admin-update.html";
+            },
+            deleteUser(uId){
+                let indexThis = this;
+                layer.confirm('您确定要删除这条信息吗？', {
+                    btn: ['确定','取消'], //按钮
+                    skin: 'layui-layer-molv'
+                }, function(){
+                    indexThis.$http.get(SERVER_PATH+'deleteUS',{
+                        params:{
+                            "uId":uId,
+                        }
+                    }).then(function (res) {
+                        console.log(res);
+                        lay_alert(res.body.message.msg);
+                    });
+                }, function(){
+                });
+            },
+            pageIndex(i){
+                this.$http.get(SERVER_PATH+'getAllUser',{
+                    params:{
+                        "page":10,
+                        "limit":i
+                    }
+                }).then(function (res) {
+                    console.log(res.data.data.list)
+                    this.userList = res.data.data.list;
+                });
+            }
         }
-    }
+    });
 });
-});
+function delAll(url) {
+    delAllTemplate(url);
+}
