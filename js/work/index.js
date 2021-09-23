@@ -1,9 +1,9 @@
 let token = sessionStorage.getItem("token");
 $(function () {
- /*   if (!token){
+    if (!token){
         window.location.href = "login.html";
         return;
-    }*/
+    }
     $.ajax({
         url: SERVER_PATH + "indexToken?token="+token,
         type: "get",

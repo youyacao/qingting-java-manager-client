@@ -1,6 +1,5 @@
 $(function () {
     $("#login").on('click',function () {
-        alert("")
         let username = $("#username").val();
         let password = $("#password").val();
         let userData  = {
@@ -41,21 +40,21 @@ $(function () {
     });
 
     function verify(username,password) {
-        if (!!username && !!password){
+        /*if (!!username && !!password){
             if (username.length>=11){
                 if(password.length<6||password.length>12){
                     return "密码长度不规范";
                 }
                 return true;
             }else if(username.indexOf("@")!==-1&&username.indexOf(".")!==-1){
-                if(password.length<6||password.length>12){
+                if(password.length<4||password.length>12){
                     return "密码长度不规范";
                 }
                 return true;
             }else {
                 return "账号格式错误";
             }
-        }
+        }*/
         return !!username && !!password;
     }
 })

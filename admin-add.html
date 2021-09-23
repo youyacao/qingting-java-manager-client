@@ -27,7 +27,7 @@
                       </label>
                       <div class="layui-input-inline">
                           <input type="text" id="username" name="username" required="" lay-verify="required"
-                          autocomplete="off" class="layui-input"  v-model="us.username">
+                          autocomplete="off" class="layui-input"  v-model="us.adminName">
                       </div>
                       <div class="layui-form-mid layui-word-aux">
                           <span class="x-red">*</span>
@@ -39,7 +39,7 @@
                       </label>
                       <div class="layui-input-inline">
                           <input type="text" id="account" name="account" required="" lay-verify="account"
-                          autocomplete="off" class="layui-input"   v-model="us.account">
+                          autocomplete="off" class="layui-input"   v-model="us.adminAccount">
                       </div>
                       <div class="layui-form-mid layui-word-aux">
                           <span class="x-red">*</span>将会成为您唯一的登入名
@@ -51,7 +51,7 @@
                       </label>
                       <div class="layui-input-inline">
                           <input type="password" id="L_pass" name="pass" required="" lay-verify="pass"
-                          autocomplete="off" class="layui-input"   v-model="us.password">
+                          autocomplete="off" class="layui-input"   v-model="us.adminPassword">
                       </div>
                       <div class="layui-form-mid layui-word-aux">
                           6到16个字符
@@ -63,13 +63,13 @@
                       </label>
                       <div class="layui-input-inline">
                           <input type="password" id="L_repass" name="repass" required="" lay-verify="repass"
-                          autocomplete="off" class="layui-input" v-model="us.password" >
+                          autocomplete="off" class="layui-input" v-model="us.adminPassword" >
                       </div>
                   </div>
                   <div class="layui-form-item">
                       <label for="L_repass" class="layui-form-label">
                       </label>
-                      <button  class="layui-btn" lay-filter="add" lay-submit="" v-on:click="updateUser($event)">
+                      <button  class="layui-btn" lay-filter="add" lay-submit="" v-on:click="addAdmin()">
                           确定
                       </button>
                   </div>
@@ -81,7 +81,7 @@
         <script src="js/vendor/vue-resource-1.3.4.js"></script>
         <script src="js/from.js"></script>
         <script src="js/publicVariable.js"></script>
-       <!-- <script src="js/work/admin.js"></script>-->
+        <script src="js/work/adminAdd.js"></script>
         <script>
 
         </script>
